@@ -1,0 +1,29 @@
+version: '3.5'
+services:
+  media-api-ecommerce:
+    build: .
+    container_name: media.api.ecommerce
+    command: bash -c "tail -f /dev/null"
+    volumes:
+      - .:/usr/src
+      - /usr/src/node_modules
+    ports:
+      - "3011:3011"
+    networks:
+      api-ecommerce:
+        aliases:
+          - media-api-ecommerce
+
+  mongo:
+    image: mongo:3.6
+    volumes:
+      - ./data/mongo:/data/db
+    ports:
+      - "27020:27017"
+    networks:
+      - api-ecommerce
+
+networks:
+  api-ecommerce:
+    name: api-ecommerce
+    driver: bridge
