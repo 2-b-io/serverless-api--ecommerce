@@ -1,13 +1,13 @@
 import createSettingImageModel from 'models/setting-image'
 
-const create = async ({ identifier, setting = {} }) => {
+const create = async ({ identifier, settings = {} }) => {
   console.log('identifier', identifier);
 
   const SettingImageModel = await createSettingImageModel()
 
   const settingImage = await new SettingImageModel({
     identifier,
-    setting
+    settings
   }).save()
 
   if (!settingImage) {

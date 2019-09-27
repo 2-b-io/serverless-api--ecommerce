@@ -13,26 +13,26 @@ import {
   parseAuthorizationHeader
 } from 'utils/header'
 
-// const getSession = async (req) => {
-//   const { authorization } = normalizeHttpHeaders(req.headers)
-//   const {
-//     app,
-//     account: accountIdentifier,
-//   } = parseAuthorizationHeader(authorization)
-//
-//   const account = accountIdentifier ?
-//     await accountService.get(accountIdentifier) :
-//     null
-//
-//   if (accountIdentifier && !account) {
-//     throw UNAUTHORIZED
-//   }
-//
-//   return {
-//     app,
-//     account
-//   }
-// }
+const getSession = async (req) => {
+  const { authorization } = normalizeHttpHeaders(req.headers)
+  const {
+    app,
+    account: accountIdentifier,
+  } = parseAuthorizationHeader(authorization)
+
+  // const account = accountIdentifier ?
+  //   await accountService.get(accountIdentifier) :
+  //   null
+
+  if (accountIdentifier) {
+    throw UNAUTHORIZED
+  }
+
+  return {
+    app,
+    // account
+  }
+}
 
 const transform = (type, resource) => {
   const transformer = transformers[ type ] || ((r) => r)

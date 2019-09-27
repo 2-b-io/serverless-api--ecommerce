@@ -11,7 +11,7 @@ const schema = mongoose.Schema({
   }
 }, {
   timestamps: true,
-  collection: 'SettingImage'
+  collection: 'settingImage'
 })
 
 export default () => register('SettingImage', schema)
