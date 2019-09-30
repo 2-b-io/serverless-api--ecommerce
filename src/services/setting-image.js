@@ -1,7 +1,6 @@
 import createSettingImageModel from 'models/setting-image'
 
 const create = async ({ identifier, settings = {} }) => {
-  console.log('identifier', identifier);
 
   const SettingImageModel = await createSettingImageModel()
 
@@ -18,13 +17,14 @@ const create = async ({ identifier, settings = {} }) => {
 }
 
 const get = async (identifier) => {
+  const SettingImageModel = await createSettingImageModel()
+
   return await SettingImageModel.findOne({
     identifier
   })
 }
 
 // // TODO:  auto delete if upload handler from upload tool
-
 
 export default {
   create,

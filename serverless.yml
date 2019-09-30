@@ -34,4 +34,11 @@ functions:
       - http:
           path: /settings/image
           method: post
+
+  SETTING__IMAGE___get:
+    handler: src/handler.SETTING__IMAGE___get
+    events:
+      - http:
+          path: /settings/image/{settingImageIdentifier}
+          method: get
   # SETTING IMAGE --- END

@@ -2,7 +2,6 @@ import { BAD_REQUEST, CREATED } from 'http-status-codes'
 import joi from 'joi'
 
 import resource from 'rest/resource'
-import authorize from 'middlewares/authorize'
 import config from 'infrastructure/config'
 import settingImageService from 'services/setting-image'
 
@@ -11,9 +10,7 @@ const SCHEMA = joi.object().keys({
   settings: joi.object()
 })
 
-export default authorize([
-  config.apps.EC_DEMO,
-])(resource('SETTING_IMAGE') (
+export default (resource('SETTING_IMAGE') (
   async (req, session) => {
     const body = JSON.parse(req.body)
     const values = await joi.validate(body, SCHEMA)
@@ -27,9 +24,7 @@ export default authorize([
 
     return {
       statusCode: CREATED,
-      resource: {
-        ...settingImage
-      }
+      resource: settingImage
     }
   }
 ))

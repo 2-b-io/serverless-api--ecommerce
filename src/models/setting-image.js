@@ -3,6 +3,7 @@ import mongoose, { register } from 'infrastructure/mongoose'
 const schema = mongoose.Schema({
   identifier: {
     type: String,
+    unique: true,
     index: true
   },
   settings: {

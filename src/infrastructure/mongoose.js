@@ -43,7 +43,6 @@ const connect = async () => {
 }
 
 export const register = async (modelName, schema) => {
-  console.log('register');
   const connection = await connect()
 
   if (connection.modelNames().includes(modelName)) {
